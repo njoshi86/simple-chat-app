@@ -1,4 +1,4 @@
-import {necessaryDataIsProvidedToCalculateSavings, calculateMilesDrivenPerMonth, calculateSavingsPerMonth} from './fuelSavings';
+import {necessaryDataIsProvidedToCalculateSavings, calculateMilesDrivenPerMonth, calculateSavingsPerMonth} from './fuelSavings'
 
 describe('Fuel Savings Calculator', () => {
   describe('necessaryDataIsProvidedToCalculateSavings', () => {
@@ -6,11 +6,11 @@ describe('Fuel Savings Calculator', () => {
       // arrange
       const settings = {
         newMpg: 20
-      };
+      }
 
       // assert
-      expect(necessaryDataIsProvidedToCalculateSavings(settings)).toEqual(false);
-    });
+      expect(necessaryDataIsProvidedToCalculateSavings(settings)).toEqual(false)
+    })
 
     it('returns true when necessary data is provided', () => {
       // arrange
@@ -20,55 +20,55 @@ describe('Fuel Savings Calculator', () => {
         newPpg: 1.50,
         tradePpg: 1.50,
         milesDriven: 100
-      };
+      }
 
       // assert
-      expect(necessaryDataIsProvidedToCalculateSavings(settings)).toEqual(true);
-    });
-  });
+      expect(necessaryDataIsProvidedToCalculateSavings(settings)).toEqual(true)
+    })
+  })
 
   describe('milesPerMonth', () => {
     it('converts a weekly timeframe to a monthly timeframe', () => {
       // arrange
-      const milesPerWeek = 100;
+      const milesPerWeek = 100
 
       // act
-      const milesPerMonth = calculateMilesDrivenPerMonth(milesPerWeek, 'week');
+      const milesPerMonth = calculateMilesDrivenPerMonth(milesPerWeek, 'week')
 
       // assert
-      expect(milesPerMonth).toEqual(433.3333333333333);
-    });
+      expect(milesPerMonth).toEqual(433.3333333333333)
+    })
 
     it('returns a monthly timeframe untouched', () => {
       // arrange
-      const milesPerMonth = 300;
+      const milesPerMonth = 300
 
       // act
-      const milesPerMonthCalculated = calculateMilesDrivenPerMonth(milesPerMonth, 'month');
+      const milesPerMonthCalculated = calculateMilesDrivenPerMonth(milesPerMonth, 'month')
 
       // assert
-      expect(milesPerMonthCalculated).toEqual(milesPerMonth);
-    });
+      expect(milesPerMonthCalculated).toEqual(milesPerMonth)
+    })
 
     it('converts a yearly timeframe to a monthly timeframe', () => {
       // arrange
-      const milesPerYear = 1200;
+      const milesPerYear = 1200
 
       // act
-      const milesPerMonth = calculateMilesDrivenPerMonth(milesPerYear, 'year');
+      const milesPerMonth = calculateMilesDrivenPerMonth(milesPerYear, 'year')
 
       // assert
-      expect(milesPerMonth).toEqual(100);
-    });
+      expect(milesPerMonth).toEqual(100)
+    })
 
     it('throws an error on invalid timeFrame', () => {
       // arrange
-      const milesPerYear = 1200;
+      const milesPerYear = 1200
 
         // act & assert
-        expect(() => calculateMilesDrivenPerMonth(milesPerYear, 'minute')).toThrow('Unknown milesDrivenTimeframe passed: minute');
-    });
-  });
+        expect(() => calculateMilesDrivenPerMonth(milesPerYear, 'minute')).toThrow('Unknown milesDrivenTimeframe passed: minute')
+    })
+  })
 
   describe('calculateSavingsPerMonth', () => {
     it('returns 29.93 in savings per month with these settings', () => {
@@ -80,14 +80,14 @@ describe('Fuel Savings Calculator', () => {
         newMpg: 38,
         milesDriven: 120,
         milesDrivenTimeframe: 'week'
-      };
+      }
 
       // act
-      const savingsPerMonth = calculateSavingsPerMonth(settings);
+      const savingsPerMonth = calculateSavingsPerMonth(settings)
 
       // assert
-      expect(savingsPerMonth).toEqual(29.93);
-    });
+      expect(savingsPerMonth).toEqual(29.93)
+    })
 
     it('returns 40.83 in savings per month with these settings', () => {
       // arrange
@@ -98,14 +98,14 @@ describe('Fuel Savings Calculator', () => {
         newMpg: 38,
         milesDriven: 550,
         milesDrivenTimeframe: 'month'
-      };
+      }
 
       // act
-      const savingsPerMonth = calculateSavingsPerMonth(settings);
+      const savingsPerMonth = calculateSavingsPerMonth(settings)
 
       // assert
-      expect(savingsPerMonth).toEqual(40.83);
-    });
+      expect(savingsPerMonth).toEqual(40.83)
+    })
 
     it('returns -157.12 in loss per month with these settings', () => {
       // arrange
@@ -116,14 +116,14 @@ describe('Fuel Savings Calculator', () => {
         newMpg: 18,
         milesDriven: 14550,
         milesDrivenTimeframe: 'year'
-      };
+      }
 
       // act
-      const savingsPerMonth = calculateSavingsPerMonth(settings);
+      const savingsPerMonth = calculateSavingsPerMonth(settings)
 
       // assert
-      expect(savingsPerMonth).toEqual(-157.12);
-    });
+      expect(savingsPerMonth).toEqual(-157.12)
+    })
 
     it('returns 0 per month with these settings', () => {
       // arrange
@@ -134,13 +134,13 @@ describe('Fuel Savings Calculator', () => {
         newMpg: 18,
         milesDriven: 0,
         milesDrivenTimeframe: 'year'
-      };
+      }
 
       // act
-      const savingsPerMonth = calculateSavingsPerMonth(settings);
+      const savingsPerMonth = calculateSavingsPerMonth(settings)
 
       // assert
-      expect(savingsPerMonth).toEqual(0);
-    });
-  });
-});
+      expect(savingsPerMonth).toEqual(0)
+    })
+  })
+})

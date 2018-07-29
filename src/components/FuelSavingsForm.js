@@ -1,8 +1,8 @@
-import React from 'react';
-import {func} from 'prop-types';
-import FuelSavingsResults from './FuelSavingsResults';
-import FuelSavingsTextInput from './FuelSavingsTextInput';
-import {fuelSavings} from '../types';
+import React from 'react'
+import {func} from 'prop-types'
+import FuelSavingsResults from './FuelSavingsResults'
+import FuelSavingsTextInput from './FuelSavingsTextInput'
+import {fuelSavings} from '../types'
 
 const FuelSavingsForm = ({fuelSavings, onSaveClick, onChange}) => (
   <div>
@@ -59,12 +59,12 @@ const FuelSavingsForm = ({fuelSavings, onSaveClick, onChange}) => (
     {fuelSavings.necessaryDataIsProvidedToCalculateSavings && <FuelSavingsResults savings={fuelSavings.savings}/>}
     <input type="submit" value="Save" onClick={onSaveClick}/>
   </div>
-);
+)
 
 FuelSavingsForm.propTypes = {
   onSaveClick: func.isRequired,
   onChange: func.isRequired,
   fuelSavings: fuelSavings.isRequired
-};
+}
 
-export default FuelSavingsForm;
+export default FuelSavingsForm

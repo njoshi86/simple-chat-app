@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const FuelSavingsTextInput = ({name, value, placeholder, onChange}) => {
   return (
@@ -10,10 +10,10 @@ const FuelSavingsTextInput = ({name, value, placeholder, onChange}) => {
       placeholder={placeholder}
       value={value}
       onChange={onChange}/>
-  );
-};
+  )
+}
 
-const { string, func, number, oneOfType } = PropTypes;
+const { string, func, number, oneOfType } = PropTypes
 
 FuelSavingsTextInput.propTypes = {
   name: string.isRequired,
@@ -23,6 +23,6 @@ FuelSavingsTextInput.propTypes = {
     string,
     number
   ])
-};
+}
 
-export default FuelSavingsTextInput;
+export default FuelSavingsTextInput

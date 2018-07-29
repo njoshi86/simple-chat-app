@@ -141,4 +141,4 @@ exports[`<FuelSavingsPage /> should match snapshot 1`] = `
     value="Save"
   />
 </div>
-`;
+`

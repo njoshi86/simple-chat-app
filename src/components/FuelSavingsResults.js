@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {scrubFormatting} from '../utils/numberFormat';
+import React from 'react'
+import PropTypes from 'prop-types'
+import {scrubFormatting} from '../utils/numberFormat'
 
 const FuelSavingsResults = ({savings}) => {
-  const savingsExist = scrubFormatting(savings.monthly) > 0;
-  const savingsClass = savingsExist ? 'savings' : 'loss';
-  const resultLabel = savingsExist ? 'Savings' : 'Loss';
+  const savingsExist = scrubFormatting(savings.monthly) > 0
+  const savingsClass = savingsExist ? 'savings' : 'loss'
+  const resultLabel = savingsExist ? 'Savings' : 'Loss'
 
   return (
     <table>
@@ -31,11 +31,11 @@ const FuelSavingsResults = ({savings}) => {
       </tr>
       </tbody>
     </table>
-  );
-};
+  )
+}
 
 FuelSavingsResults.propTypes = {
   savings: PropTypes.object.isRequired
-};
+}
 
-export default FuelSavingsResults;
+export default FuelSavingsResults
