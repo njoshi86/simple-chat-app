@@ -38,7 +38,9 @@
     "react-router-dom": "4.2.2",
     "react-router-redux": "5.0.0-alpha.6",
     "redux": "3.6.0",
-    "redux-thunk": "2.1.0"
+    "redux-thunk": "2.1.0",
+    "semantic-ui-css": "^2.3.3",
+    "semantic-ui-react": "^0.82.1"
   },
   "devDependencies": {
     "autoprefixer": "7.1.4",
@@ -129,7 +131,11 @@
   "babel": {
     "env": {
       "development": {
-        "presets": ["env", "react", "stage-1"]
+        "presets": [
+          "env",
+          "react",
+          "stage-1"
+        ]
       },
       "production": {
         "presets": [

@@ -1,5 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Button } from 'semantic-ui-react'
+
+const SemanticUi = () => {
+  return <div><Button color='red'>Click Me</Button></div>
+}
 
 const HomePage = () => {
   return (
@@ -8,11 +13,12 @@ const HomePage = () => {
 
       <h2>Get Started</h2>
       <ol>
-        <li>Review the <Link to="/fuel-savings">demo app</Link></li>
+        <li>Review the <Link to='/fuel-savings'>demo app</Link></li>
         <li>Remove the demo and start coding: npm run remove-demo</li>
       </ol>
+      <SemanticUi />
     </div>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage
