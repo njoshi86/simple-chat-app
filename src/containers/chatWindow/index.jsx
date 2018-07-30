@@ -37,15 +37,16 @@ class ChatWindow extends Component {
   }
   render () {
     const { chatRooms, chatRoomUsers, chatRoomMessages, currentUser } = this.props
+    const selectedChatRoomId = 0
     return (
       <div className={cx('chatWindow')}>
         <ChatRoomHeader
-          chatRoomName={chatRooms[0]['name']}
-          chatRoomUsers={chatRoomUsers[chatRooms[0]['id']]}
+          chatRoomName={chatRooms[selectedChatRoomId]['name']}
+          chatRoomUsers={chatRoomUsers[chatRooms[selectedChatRoomId]['id']]}
           currentUser={currentUser}
         />
         <ChatRoom
-          chatRoomMessages={chatRoomMessages[0]}
+          chatRoomMessages={chatRoomMessages[selectedChatRoomId]}
           currentUser={currentUser}
         />
       </div>
