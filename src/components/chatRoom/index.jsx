@@ -35,13 +35,16 @@ class ChatRoom extends Component {
           chatRoomMessages.map((message) => {
             const ownMessage = message.name.toLowerCase() === currentUser.toLowerCase()
             const textAlign = ownMessage ? 'right' : 'left'
-            const color = ownMessage ? 'red' : 'white'
+            const color = ownMessage ? 'red' : 'green'
+            const float = ownMessage ? 'right' : 'left'
             return (
               <div className={'message'} key={message.id}>
                 <Segment
-                  textAlign={textAlign}
                   inverted
+                  compact
                   color={color}
+                  floated={float}
+                  className={`message-segment`}
                   >
                     {message.message}
                 </Segment>
