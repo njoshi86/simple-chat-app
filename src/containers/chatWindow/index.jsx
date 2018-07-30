@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
+import ChatRoom from '../../components/chatRoom'
 
 class ChatWindow extends Component {
   static propTypes = {
     chatRooms: PropTypes.array.isRequired,
     chatRoomUsers: PropTypes.object.isRequired,
-    chatRoomMessages: PropTypes.object.isRequired
+    chatRoomMessages: PropTypes.object.isRequired,
+    currentUser: PropTypes.string.isRequired
   }
   static defaultProps = {
     chatRooms: [
@@ -25,12 +27,17 @@ class ChatWindow extends Component {
       1: [
         {name: 'Jessye', message: 'ayy', id: 'ff35278', reaction: null}
       ]
-    }
+    },
+    currentUser: 'Ryan'
   }
   render () {
+    const { chatRoomMessages, currentUser } = this.props
     return (
       <div>
-        This will show chat window
+        <ChatRoom
+          chatRoomMessages={chatRoomMessages[0]}
+          currentUser={currentUser}
+        />
       </div>
     )
   }
