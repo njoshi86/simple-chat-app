@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
-import { Segment } from 'semantic-ui-react'
-import './styles.scss'
+import { Segment, Label } from 'semantic-ui-react'
+import classnames from 'classnames/bind'
+import stylesheet from './styles.scss'
+const cx = classnames.bind(stylesheet)
 
 class ChatRoom extends Component {
   static propTypes = {
@@ -33,21 +35,28 @@ class ChatRoom extends Component {
         {`currentUser: ${currentUser}`}
         {
           chatRoomMessages.map((message) => {
-            const ownMessage = message.name.toLowerCase() === currentUser.toLowerCase()
-            const textAlign = ownMessage ? 'right' : 'left'
+            const writer = message.name
+            const ownMessage = writer.toLowerCase() === currentUser.toLowerCase()
+            // const textAlign = ownMessage ? 'right' : 'left'
             const color = ownMessage ? 'red' : 'green'
             const float = ownMessage ? 'right' : 'left'
             return (
-              <div className={'message'} key={message.id}>
+              <div className={cx('message')} key={message.id}>
                 <Segment
                   inverted
                   compact
                   color={color}
                   floated={float}
-                  className={`message-segment`}
+                  className={cx('message-segment')}
                   >
                     {message.message}
                 </Segment>
+                <Label
+                  inverted
+                  className={cx('message-writer')}
+                >
+                  {!ownMessage ? writer : ''}
+                </Label>
               </div>
             )
           })
