@@ -8,16 +8,16 @@ const cx = classnames.bind(stylesheet)
 const ReadOnlyMessage = (props) => {
   const { writer, message, messageId, currentUser } = props
   const ownMessage = writer.toLowerCase() === currentUser.toLowerCase()
-  const color = ownMessage ? 'red' : 'green'
+  const color = ownMessage ? 'red' : 'transparent'
   const float = ownMessage ? 'right' : 'left'
   return (
     <div className={cx('message')} key={messageId}>
       <Segment
-        inverted
+        inverted={ownMessage}
         compact
         color={color}
         floated={float}
-        className={cx('message-segment')}
+        className={cx('message-segment', {'receivedMessageSegment': !ownMessage})}
         >
           {message}
       </Segment>
