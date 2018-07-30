@@ -39,13 +39,17 @@ class ChatApp extends Component {
     const { chatRooms, chatRoomUsers, chatRoomMessages, currentUser } = this.props
     return (
       <div className={cx('chatApp')}>
-        <ChatRooms />
-        <ChatWindow
-          chatRooms={chatRooms}
-          chatRoomUsers={chatRoomUsers}
-          chatRoomMessages={chatRoomMessages}
-          currentUser={currentUser}
-        />
+        <div className={cx('chatRoomsListContainer')}>
+          <ChatRooms />
+        </div>
+        <div className={cx('chatWindowContainer')}>
+          <ChatWindow
+            chatRooms={chatRooms}
+            chatRoomUsers={chatRoomUsers}
+            chatRoomMessages={chatRoomMessages}
+            currentUser={currentUser}
+          />
+        </div>
       </div>
     )
   }

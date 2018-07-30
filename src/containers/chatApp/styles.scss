@@ -1,3 +1,16 @@
 .chatApp {
   height: 100%;
+  width: 100%;
+}
+
+.chatRoomsListContainer {
+  width: 200px;
+  height: 100%;
+  display: inline-block;
+}
+
+.chatWindowContainer {
+  width: calc(100% - 200px);
+  height: 100%;
+  display: inline-block;
 }
