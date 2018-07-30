@@ -32,12 +32,10 @@ class ChatRoom extends Component {
     const { chatRoomMessages, currentUser } = this.props
     return (
       <div>
-        {`currentUser: ${currentUser}`}
         {
           chatRoomMessages.map((message) => {
             const writer = message.name
             const ownMessage = writer.toLowerCase() === currentUser.toLowerCase()
-            // const textAlign = ownMessage ? 'right' : 'left'
             const color = ownMessage ? 'red' : 'green'
             const float = ownMessage ? 'right' : 'left'
             return (
