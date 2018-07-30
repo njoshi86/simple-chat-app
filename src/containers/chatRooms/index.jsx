@@ -1,17 +1,35 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux'
-import ChatWindow from '../chatWindow'
-import ChatRooms from '../chatRooms'
+import { List } from 'semantic-ui-react'
 import classnames from 'classnames/bind'
 import stylesheet from './styles.scss'
 const cx = classnames.bind(stylesheet)
 
-class ChatApp extends Component {
+const ChatRoomsList = (props) => {
+  const { chatRooms } = props
+  return (
+    <List link>
+      {chatRooms.map((chatRoom, index) => {
+        return (
+          <List.Item active={index === 0} as='a' key={chatRoom.id}>{chatRoom.name}</List.Item>
+        )
+      })}
+    </List>
+  )
+}
+
+ChatRoomsList.propTypes = {
+  chatRooms: PropTypes.array.isRequired
+}
+
+ChatRoomsList.defaultProps = {
+  chatRooms: []
+}
+
+class ChatRooms extends Component {
   static propTypes = {
     chatRooms: PropTypes.array.isRequired,
-    chatRoomUsers: PropTypes.object.isRequired,
-    chatRoomMessages: PropTypes.object.isRequired,
     currentUser: PropTypes.string.isRequired
   }
   static defaultProps = {
@@ -19,32 +37,14 @@ class ChatApp extends Component {
       {name: 'Tea Chats', id: 0},
       {name: 'Coffee Chats', id: 1}
     ],
-    chatRoomUsers: {
-      0: ['Ryan','Nick', 'Danielle'],
-      1: ['Jessye']
-    },
-    chatRoomMessages: {
-      0: [
-        {name: 'Ryan', message: 'This message is important. This message is important. This message is important. This message is important. This message is important.', id: 'gg35545', reaction: null},
-        {name: 'Nick', message: 'This message is important. This message is important. This message is important.', id: 'yy35578', reaction: null},
-        {name: 'Danielle', message: 'This message is important.', id: 'hh9843', reaction: null}
-      ],
-      1: [
-        {name: 'Jessye', message: 'ayy', id: 'ff35278', reaction: null}
-      ]
-    },
     currentUser: 'Ryan'
   }
   render () {
-    const { chatRooms, chatRoomUsers, chatRoomMessages, currentUser } = this.props
+    const { chatRooms, currentUser } = this.props
     return (
-      <div className={cx('chatApp')}>
-        <ChatRooms />
-        <ChatWindow
+      <div className={cx('chatRoomsList')}>
+        <ChatRoomsList
           chatRooms={chatRooms}
-          chatRoomUsers={chatRoomUsers}
-          chatRoomMessages={chatRoomMessages}
-          currentUser={currentUser}
         />
       </div>
     )
@@ -77,4 +77,5 @@ class ChatApp extends Component {
 //   mapDispatchToProps
 // )(chatWindow)
 
-export default ChatApp
+export default ChatRooms
+export { ChatRoomsList }
