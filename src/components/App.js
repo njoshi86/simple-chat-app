@@ -8,6 +8,7 @@ import NotFoundPage from './NotFoundPage'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { hot } from 'react-hot-loader'
+import '../styles/styles.scss'
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -17,7 +18,7 @@ class App extends React.Component {
   render() {
     const activeStyle = { color: 'blue' }
     return (
-      <div>
+      <div className='main-app'>
         <div>
           <NavLink exact to='/' activeStyle={activeStyle}>Home</NavLink>
           {' | '}

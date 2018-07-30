@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux'
 import ChatRoom from '../../components/chatRoom'
+import classnames from 'classnames/bind'
+import stylesheet from './styles.scss'
+const cx = classnames.bind(stylesheet)
 
 class ChatWindow extends Component {
   static propTypes = {
@@ -34,7 +37,7 @@ class ChatWindow extends Component {
   render () {
     const { chatRoomMessages, currentUser } = this.props
     return (
-      <div>
+      <div className={cx('chatWindow')}>
         <ChatRoom
           chatRoomMessages={chatRoomMessages[0]}
           currentUser={currentUser}

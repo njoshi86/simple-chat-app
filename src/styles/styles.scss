@@ -24,6 +24,14 @@ h2 {
 	color: $vin-blue;
 }
 
+.app {
+  height: 100%;
+}
+
+.main-app {
+  height: 100%;
+}
+
 .savings { color: $vin-green; }
 .loss { color: $vin-red; }
 input.small { width: 46px; }

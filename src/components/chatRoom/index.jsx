@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
 import ReadOnlyMessage from '../readOnlyMessage'
+import classnames from 'classnames/bind'
+import stylesheet from './styles.scss'
+const cx = classnames.bind(stylesheet)
 
 class ChatRoom extends Component {
   static propTypes = {
@@ -28,7 +31,7 @@ class ChatRoom extends Component {
   render () {
     const { chatRoomMessages, currentUser } = this.props
     return (
-      <div>
+      <div className={cx('message-container')}>
         {
           chatRoomMessages.map((messageObj) => {
             return (
