@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
+import { Segment } from 'semantic-ui-react'
+import './styles.scss'
 
 class ChatRoom extends Component {
   static propTypes = {
@@ -31,10 +33,19 @@ class ChatRoom extends Component {
         {`currentUser: ${currentUser}`}
         {
           chatRoomMessages.map((message) => {
+            const ownMessage = message.name.toLowerCase() === currentUser.toLowerCase()
+            const textAlign = ownMessage ? 'right' : 'left'
+            const color = ownMessage ? 'red' : 'white'
             return (
-              <p key={message.id}>
-                {message.message}
-              </p>
+              <div className={'message'} key={message.id}>
+                <Segment
+                  textAlign={textAlign}
+                  inverted
+                  color={color}
+                  >
+                    {message.message}
+                </Segment>
+              </div>
             )
           })
         }
