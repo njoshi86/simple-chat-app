@@ -1,9 +1,15 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import { PropTypes } from 'prop-types'
 
 class ChatRoom extends Component {
   static propTypes = {
     chatRoomMessages: PropTypes.array.isRequired,
     currentUser: PropTypes.string.isRequired
+  }
+
+  static defaultProps = {
+    chatRoomMessages: [],
+    currentUser: ''
   }
   // static defaultProps = {
   //   chatRoomMessages: {
