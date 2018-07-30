@@ -1,0 +1,19 @@
+.message {
+  margin: 1rem;
+  display: block;
+}
+
+.message-segment {
+  max-width: 60%;
+  margin-bottom: 0 !important;
+  border-radius: 1rem !important;
+}
+
+.message-writer {
+  color: 'grey';
+  background-color: transparent !important;
+  clear: both;
+  display: block !important;
+  width: auto;
+  padding-left: 0 !important;
+}

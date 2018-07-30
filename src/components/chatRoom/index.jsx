@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
-import { Segment, Label } from 'semantic-ui-react'
-import classnames from 'classnames/bind'
-import stylesheet from './styles.scss'
-const cx = classnames.bind(stylesheet)
+import ReadOnlyMessage from '../readOnlyMessage'
 
 class ChatRoom extends Component {
   static propTypes = {
@@ -33,29 +30,15 @@ class ChatRoom extends Component {
     return (
       <div>
         {
-          chatRoomMessages.map((message) => {
-            const writer = message.name
-            const ownMessage = writer.toLowerCase() === currentUser.toLowerCase()
-            const color = ownMessage ? 'red' : 'green'
-            const float = ownMessage ? 'right' : 'left'
+          chatRoomMessages.map((messageObj) => {
             return (
-              <div className={cx('message')} key={message.id}>
-                <Segment
-                  inverted
-                  compact
-                  color={color}
-                  floated={float}
-                  className={cx('message-segment')}
-                  >
-                    {message.message}
-                </Segment>
-                <Label
-                  inverted
-                  className={cx('message-writer')}
-                >
-                  {!ownMessage ? writer : ''}
-                </Label>
-              </div>
+              <ReadOnlyMessage
+                writer={messageObj.name}
+                message={messageObj.message}
+                messageId={messageObj.id}
+                currentUser={currentUser}
+                key={messageObj.id}
+              />
             )
           })
         }
