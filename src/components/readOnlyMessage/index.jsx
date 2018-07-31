@@ -8,7 +8,7 @@ const cx = classnames.bind(stylesheet)
 const ReadOnlyMessage = (props) => {
   const { writer, message, messageId, currentUser } = props
   const ownMessage = writer.toLowerCase() === currentUser.toLowerCase()
-  const color = ownMessage ? 'red' : 'transparent'
+  const color = ownMessage ? 'red' : 'green'
   const float = ownMessage ? 'right' : 'left'
   return (
     <div className={cx('message')} key={messageId}>

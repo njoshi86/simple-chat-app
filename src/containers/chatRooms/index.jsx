@@ -7,12 +7,19 @@ import stylesheet from './styles.scss'
 const cx = classnames.bind(stylesheet)
 
 const ChatRoomsList = (props) => {
-  const { chatRooms } = props
+  const { chatRooms, selectChatRoom } = props
   return (
     <List link>
       {chatRooms.map((chatRoom, index) => {
         return (
-          <List.Item active={index === 0} as='a' key={chatRoom.id}>{chatRoom.name}</List.Item>
+          <List.Item
+            active={index === 0}
+            as='a'
+            key={chatRoom.id}
+            onClick={() => { selectChatRoom(chatRoom.id) }}
+            >
+            {chatRoom.name}
+          </List.Item>
         )
       })}
     </List>
@@ -20,31 +27,36 @@ const ChatRoomsList = (props) => {
 }
 
 ChatRoomsList.propTypes = {
-  chatRooms: PropTypes.array.isRequired
+  chatRooms: PropTypes.array.isRequired,
+  selectChatRoom: PropTypes.func.isRequired
 }
 
 ChatRoomsList.defaultProps = {
-  chatRooms: []
+  chatRooms: [],
+  selectChatRoom: () => {}
 }
 
 class ChatRooms extends Component {
   static propTypes = {
     chatRooms: PropTypes.array.isRequired,
-    currentUser: PropTypes.string.isRequired
+    currentUser: PropTypes.string.isRequired,
+    selectChatRoom: PropTypes.func.isRequired
   }
   static defaultProps = {
     chatRooms: [
       {name: 'Tea Chats', id: 0},
       {name: 'Coffee Chats', id: 1}
     ],
-    currentUser: 'Ryan'
+    currentUser: 'Ryan',
+    selectChatRoom: () => {}
   }
   render () {
-    const { chatRooms, currentUser } = this.props
+    const { chatRooms, currentUser, selectChatRoom } = this.props
     return (
       <div className={cx('chatRoomsList')}>
         <ChatRoomsList
           chatRooms={chatRooms}
+          selectChatRoom={selectChatRoom}
         />
       </div>
     )

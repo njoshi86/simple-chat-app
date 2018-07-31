@@ -12,7 +12,8 @@ class ChatWindow extends Component {
     chatRooms: PropTypes.array.isRequired,
     chatRoomUsers: PropTypes.object.isRequired,
     chatRoomMessages: PropTypes.object.isRequired,
-    currentUser: PropTypes.string.isRequired
+    currentUser: PropTypes.string.isRequired,
+    selectedChatRoom: PropTypes.number.isRequired
   }
   static defaultProps = {
     chatRooms: [
@@ -33,20 +34,20 @@ class ChatWindow extends Component {
         {name: 'Jessye', message: 'ayy', id: 'ff35278', reaction: null}
       ]
     },
-    currentUser: 'Ryan'
+    currentUser: 'Ryan',
+    selectedChatRoom: 0
   }
   render () {
-    const { chatRooms, chatRoomUsers, chatRoomMessages, currentUser } = this.props
-    const selectedChatRoomId = 0
+    const { chatRooms, chatRoomUsers, chatRoomMessages, currentUser, selectedChatRoom } = this.props
     return (
       <div className={cx('chatWindow')}>
         <ChatRoomHeader
-          chatRoomName={chatRooms[selectedChatRoomId]['name']}
-          chatRoomUsers={chatRoomUsers[chatRooms[selectedChatRoomId]['id']]}
+          chatRoomName={chatRooms[selectedChatRoom]['name']}
+          chatRoomUsers={chatRoomUsers[chatRooms[selectedChatRoom]['id']]}
           currentUser={currentUser}
         />
         <ChatRoom
-          chatRoomMessages={chatRoomMessages[selectedChatRoomId]}
+          chatRoomMessages={chatRoomMessages[selectedChatRoom]}
           currentUser={currentUser}
         />
       </div>

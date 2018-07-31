@@ -8,6 +8,12 @@ import stylesheet from './styles.scss'
 const cx = classnames.bind(stylesheet)
 
 class ChatApp extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedChatRoom: props.chatRooms.length > 0 ? props.chatRooms[0]['id'] : null
+    }
+  }
   static propTypes = {
     chatRooms: PropTypes.array.isRequired,
     chatRoomUsers: PropTypes.object.isRequired,
@@ -35,12 +41,21 @@ class ChatApp extends Component {
     },
     currentUser: 'Ryan'
   }
+
+  selectChatRoom = (id) => {
+    this.setState({
+      selectedChatRoom: id
+    })
+  }
   render () {
     const { chatRooms, chatRoomUsers, chatRoomMessages, currentUser } = this.props
+    const { selectedChatRoom } = this.state
     return (
       <div className={cx('chatApp')}>
         <div className={cx('chatRoomsListContainer')}>
-          <ChatRooms />
+          <ChatRooms
+            selectChatRoom={this.selectChatRoom}
+          />
         </div>
         <div className={cx('chatWindowContainer')}>
           <ChatWindow
@@ -48,6 +63,7 @@ class ChatApp extends Component {
             chatRoomUsers={chatRoomUsers}
             chatRoomMessages={chatRoomMessages}
             currentUser={currentUser}
+            selectedChatRoom={selectedChatRoom}
           />
         </div>
       </div>
