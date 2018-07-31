@@ -16,10 +16,7 @@ class ChatWindow extends Component {
     selectedChatRoom: PropTypes.number.isRequired
   }
   static defaultProps = {
-    chatRooms: [
-      {name: 'Tea Chats', id: 0},
-      {name: 'Coffee Chats', id: 1}
-    ],
+    chatRooms: [],
     chatRoomUsers: {
       0: ['Ryan','Nick', 'Danielle'],
       1: ['Jessye']
@@ -34,8 +31,7 @@ class ChatWindow extends Component {
         {name: 'Jessye', message: 'ayy', id: 'ff35278', reaction: null}
       ]
     },
-    currentUser: 'Ryan',
-    selectedChatRoom: 0
+    currentUser: 'Ryan'
   }
   render () {
     const { chatRooms, chatRoomUsers, chatRoomMessages, currentUser, selectedChatRoom } = this.props

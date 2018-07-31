@@ -64,9 +64,10 @@ class ChatApp extends Component {
       <div className={cx('chatApp')}>
         <Grid className={cx('chatAppGrid')}>
           <Grid.Column mobile={8} tablet={5} computer={3} className={cx('chatRoomGrid')}>
-            <ChatRooms
+            {chatRooms.length > 0 && <ChatRooms
+              chatRooms={chatRooms}
               selectChatRoom={this.selectChatRoom}
-            />
+            />}
           </Grid.Column>
           <Grid.Column mobile={8} tablet={11} computer={13} className={cx('chatWindowGrid')}>
             {selectedChatRoom !== null && <ChatWindow
@@ -94,10 +95,6 @@ const mapDispatchToProps = (dispatch) => {
     fetchChatRooms: () => {
       ChatActions.fetchChatRooms(dispatch)
     }
-    // ,
-    // savedSearches: (params) => {
-    //   dispatch(savedSearches(params))
-    // }
   }
 }
 

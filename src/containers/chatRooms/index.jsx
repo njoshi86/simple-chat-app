@@ -57,10 +57,7 @@ class ChatRooms extends Component {
     selectChatRoom: PropTypes.func.isRequired
   }
   static defaultProps = {
-    chatRooms: [
-      {name: 'Tea Chats', id: 0},
-      {name: 'Coffee Chats', id: 1}
-    ],
+    chatRooms: [],
     currentUser: 'Ryan',
     selectChatRoom: () => {}
   }
