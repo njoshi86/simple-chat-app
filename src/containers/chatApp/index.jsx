@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux'
+import { Grid } from 'semantic-ui-react'
 import ChatWindow from '../chatWindow'
 import ChatRooms from '../chatRooms'
 import classnames from 'classnames/bind'
@@ -52,20 +53,22 @@ class ChatApp extends Component {
     const { selectedChatRoom } = this.state
     return (
       <div className={cx('chatApp')}>
-        <div className={cx('chatRoomsListContainer')}>
-          <ChatRooms
-            selectChatRoom={this.selectChatRoom}
-          />
-        </div>
-        <div className={cx('chatWindowContainer')}>
-          <ChatWindow
-            chatRooms={chatRooms}
-            chatRoomUsers={chatRoomUsers}
-            chatRoomMessages={chatRoomMessages}
-            currentUser={currentUser}
-            selectedChatRoom={selectedChatRoom}
-          />
-        </div>
+        <Grid className={cx('chatAppGrid')}>
+          <Grid.Column mobile={8} tablet={5} computer={3} className={cx('chatRoomGrid')}>
+            <ChatRooms
+              selectChatRoom={this.selectChatRoom}
+            />
+          </Grid.Column>
+          <Grid.Column mobile={8} tablet={11} computer={13} className={cx('chatWindowGrid')}>
+            <ChatWindow
+              chatRooms={chatRooms}
+              chatRoomUsers={chatRoomUsers}
+              chatRoomMessages={chatRoomMessages}
+              currentUser={currentUser}
+              selectedChatRoom={selectedChatRoom}
+            />
+          </Grid.Column>
+      </Grid>
       </div>
     )
   }
