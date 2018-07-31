@@ -39,9 +39,6 @@ class ChatWindow extends Component {
   }
   render () {
     const { chatRooms, chatRoomUsers, chatRoomMessages, currentUser, selectedChatRoom } = this.props
-    if (!selectedChatRoom) {
-      return null
-    }
     return (
       <div className={cx('chatWindow')}>
         <ChatRoomHeader
