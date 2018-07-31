@@ -19,13 +19,13 @@ class App extends React.Component {
     const activeStyle = { color: 'blue' }
     return (
       <div className='main-app'>
-        <div>
+        {/* <div>
           <NavLink exact to='/' activeStyle={activeStyle}>Home</NavLink>
           {' | '}
           <NavLink to='/fuel-savings' activeStyle={activeStyle}>Demo App</NavLink>
           {' | '}
           <NavLink to='/about' activeStyle={activeStyle}>About</NavLink>
-        </div>
+        </div> */}
         <Switch>
           <Route exact path='/' component={ChatApp} />
           <Route path='/fuel-savings' component={FuelSavingsPage} />
