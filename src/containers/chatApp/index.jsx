@@ -7,6 +7,7 @@ import ChatRooms from '../chatRooms'
 import classnames from 'classnames/bind'
 import stylesheet from './styles.scss'
 const cx = classnames.bind(stylesheet)
+import ChatActions from '../../actions/chatActions'
 
 class ChatApp extends Component {
   constructor(props) {
@@ -19,7 +20,8 @@ class ChatApp extends Component {
     chatRooms: PropTypes.array.isRequired,
     chatRoomUsers: PropTypes.object.isRequired,
     chatRoomMessages: PropTypes.object.isRequired,
-    currentUser: PropTypes.string.isRequired
+    currentUser: PropTypes.string.isRequired,
+    fetchChatRooms: PropTypes.func.isRequired
   }
   static defaultProps = {
     chatRooms: [
@@ -41,6 +43,10 @@ class ChatApp extends Component {
       ]
     },
     currentUser: 'Ryan'
+  }
+
+  componentDidMount () {
+    this.props.fetchChatRooms()
   }
 
   selectChatRoom = (id) => {
@@ -74,30 +80,27 @@ class ChatApp extends Component {
   }
 }
 
-// const mapStateToProps = (store) => {
-//   return {
-//     user: store.user || {},
-//     config: store.config || {},
-//     buyerAssets: store.buyerAssets || {},
-//     sellerAssets: store.sellerAssets || {}
-//   }
-// }
-//
-// const mapDispatchToProps = (dispatch) => {
-//   return {}
-//   // return {
-//   //   savedAssets: (params) => {
-//   //     dispatch(savedAssets(params))
-//   //   },
-//   //   savedSearches: (params) => {
-//   //     dispatch(savedSearches(params))
-//   //   }
-//   // }
-// }
-//
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(chatWindow)
+const mapStateToProps = (store) => {
+  return {
+    chatRooms: store.chatRooms
+  }
+}
 
-export default ChatApp
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchChatRooms: () => {
+      dispatch(ChatActions.fetchChatRooms())
+    }
+    // ,
+    // savedSearches: (params) => {
+    //   dispatch(savedSearches(params))
+    // }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ChatApp)
+
+// export default ChatApp
