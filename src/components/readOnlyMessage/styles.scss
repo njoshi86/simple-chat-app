@@ -18,7 +18,8 @@
   padding-left: 0 !important;
 }
 
-.message .message-segment.receivedMessageSegment {
+.message .ui.message-segment.receivedMessageSegment.green {
   background-color: white !important;
+  border: 0 !important;
   color: black;
 }
