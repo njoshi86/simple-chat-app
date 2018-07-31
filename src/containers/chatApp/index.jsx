@@ -99,5 +99,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ChatApp)
-
-// export default ChatApp
