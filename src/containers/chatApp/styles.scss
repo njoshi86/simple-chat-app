@@ -1,6 +1,7 @@
 .chatApp {
   height: 100%;
   width: 100%;
+  background-color: red;
 }
 
 .chatAppGrid,
@@ -8,4 +9,5 @@
 .chatWindowGrid {
   padding: 0 !important;
   margin: 0 !important;
+  height: 100%;
 }
