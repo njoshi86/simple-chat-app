@@ -6,35 +6,48 @@ import classnames from 'classnames/bind'
 import stylesheet from './styles.scss'
 const cx = classnames.bind(stylesheet)
 
-const ChatRoomsList = (props) => {
-  const { chatRooms, selectChatRoom } = props
-  return (
-    <List link className={cx('chatRoomsList')}>
-      {chatRooms.map((chatRoom, index) => {
-        return (
-          <List.Item
-            active={index === 0}
-            as='a'
-            key={chatRoom.id}
-            onClick={() => { selectChatRoom(chatRoom.id) }}
-            className={cx('chatRoomsListItem')}
-            >
-            {chatRoom.name}
-          </List.Item>
-        )
-      })}
-    </List>
-  )
-}
+class ChatRoomsList extends Component{
+  constructor(props) {
+    super(props)
+    this.state = {
+      selectedChatRoomId: props.chatRooms[0]['id']
+    }
+  }
+  static propTypes = {
+    chatRooms: PropTypes.array.isRequired,
+    selectChatRoom: PropTypes.func.isRequired
+  }
 
-ChatRoomsList.propTypes = {
-  chatRooms: PropTypes.array.isRequired,
-  selectChatRoom: PropTypes.func.isRequired
-}
-
-ChatRoomsList.defaultProps = {
-  chatRooms: [],
-  selectChatRoom: () => {}
+  static defaultProps = {
+    chatRooms: [],
+    selectChatRoom: () => {}
+  }
+  render () {
+    const { chatRooms, selectChatRoom } = this.props
+    const { selectedChatRoomId } = this.state
+    return (
+      <List link className={cx('chatRoomsList')}>
+        {chatRooms.map((chatRoom) => {
+          return (
+            <List.Item
+              active={chatRoom['id'] === selectedChatRoomId}
+              as='a'
+              key={chatRoom['id']}
+              onClick={() => {
+                this.setState({
+                  selectedChatRoomId: chatRoom['id']
+                })
+                selectChatRoom(chatRoom['id'])
+              }}
+              className={cx('chatRoomsListItem')}
+              >
+              {chatRoom.name}
+            </List.Item>
+          )
+        })}
+      </List>
+    )
+  }
 }
 
 class ChatRooms extends Component {
