@@ -42,6 +42,12 @@ class ChatApp extends Component {
     currentUser: 'Ryan'
   }
 
+  componentWillReceiveProps (nextProps) {
+    if (this.state.selectedChatRoom === null && nextProps.chatRooms.length > 0) {
+      this.setState({selectedChatRoom: nextProps.chatRooms[0]['id']})
+    }
+  }
+
   componentDidMount () {
     this.props.fetchChatRooms()
   }
