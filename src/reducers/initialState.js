@@ -1,18 +1,22 @@
 export default {
-  fuelSavings: {
-    newMpg: '',
-    tradeMpg: '',
-    newPpg: '',
-    tradePpg: '',
-    milesDriven: '',
-    milesDrivenTimeframe: 'week',
-    displayResults: false,
-    dateModified: null,
-    necessaryDataIsProvidedToCalculateSavings: false,
-    savings: {
-      monthly: 0,
-      annual: 0,
-      threeYear: 0
-    }
-  }
+  users: ['Ryan', 'Nick', 'Danielle', 'Jessye'],
+  chatRooms: [
+    {name: 'Tea Chats', id: 0},
+    {name: 'Coffee Chats', id: 1}
+  ],
+  chatRoomUsers: {
+    0: ['Ryan', 'Nick', 'Danielle'],
+    1: ['Jessye']
+  },
+  chatRoomMessages: {
+    0: [
+      {name: 'Ryan', message: 'This message is important. This message is important. This message is important. This message is important. This message is important.', id: 'gg35545', reaction: null},
+      {name: 'Nick', message: 'This message is important. This message is important. This message is important.', id: 'yy35578', reaction: null},
+      {name: 'Danielle', message: 'This message is important.', id: 'hh9843', reaction: null}
+    ],
+    1: [
+      {name: 'Jessye', message: 'ayy', id: 'ff35278', reaction: null}
+    ]
+  },
+  currentUser: 'Ryan'
 }

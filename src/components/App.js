@@ -1,10 +1,6 @@
 /* eslint-disable import/no-named-as-default */
 import { NavLink, Route, Switch } from 'react-router-dom'
-
-import AboutPage from './AboutPage'
-import FuelSavingsPage from './containers/FuelSavingsPage'
 import ChatApp from '../containers/chatApp'
-import NotFoundPage from './NotFoundPage'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { hot } from 'react-hot-loader'
@@ -28,9 +24,9 @@ class App extends React.Component {
         </div> */}
         <Switch>
           <Route exact path='/' component={ChatApp} />
-          <Route path='/fuel-savings' component={FuelSavingsPage} />
+          {/* <Route path='/fuel-savings' component={FuelSavingsPage} />
           <Route path='/about' component={AboutPage} />
-          <Route component={NotFoundPage} />
+          <Route component={NotFoundPage} /> */}
         </Switch>
       </div>
     )
