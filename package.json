@@ -32,6 +32,7 @@
   "author": "Cory House",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "object-assign": "4.1.0",
     "react": "16.2.0",

@@ -59,7 +59,7 @@ class ChatWindow extends Component {
 //     sellerAssets: store.sellerAssets || {}
 //   }
 // }
-//
+
 // const mapDispatchToProps = (dispatch) => {
 //   return {}
 //   // return {
@@ -71,7 +71,7 @@ class ChatWindow extends Component {
 //   //   }
 //   // }
 // }
-//
+
 // export default connect(
 //   mapStateToProps,
 //   mapDispatchToProps

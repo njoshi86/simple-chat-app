@@ -74,31 +74,5 @@ class ChatRooms extends Component {
   }
 }
 
-// const mapStateToProps = (store) => {
-//   return {
-//     user: store.user || {},
-//     config: store.config || {},
-//     buyerAssets: store.buyerAssets || {},
-//     sellerAssets: store.sellerAssets || {}
-//   }
-// }
-//
-// const mapDispatchToProps = (dispatch) => {
-//   return {}
-//   // return {
-//   //   savedAssets: (params) => {
-//   //     dispatch(savedAssets(params))
-//   //   },
-//   //   savedSearches: (params) => {
-//   //     dispatch(savedSearches(params))
-//   //   }
-//   // }
-// }
-//
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(chatWindow)
-
 export default ChatRooms
 export { ChatRoomsList }

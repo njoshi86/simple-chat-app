@@ -1,20 +1,15 @@
+import axios from 'axios'
 const config = 'http://localhost:3001/api'
 const ChatsProvider = {
   fetchChatRooms: () => {
     const apiUrl = `${config}/rooms`
-    return fetch(apiUrl, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' }
-    })
+    return axios(apiUrl)
     .then((response) => {
-      if (response.status !== 200) {
-        return
-      }
-      return response.json().then((data) => {
-        return data
-      })
+      return response.data
     })
-    .catch((err) => { throw err.body })
+    .catch((err) => {
+      throw err.body
+    })
   }
 }
 
