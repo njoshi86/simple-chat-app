@@ -9,7 +9,7 @@ const cx = classnames.bind(stylesheet)
 const ChatRoomsList = (props) => {
   const { chatRooms, selectChatRoom } = props
   return (
-    <List link>
+    <List link className={cx('chatRoomsList')}>
       {chatRooms.map((chatRoom, index) => {
         return (
           <List.Item
@@ -17,6 +17,7 @@ const ChatRoomsList = (props) => {
             as='a'
             key={chatRoom.id}
             onClick={() => { selectChatRoom(chatRoom.id) }}
+            className={cx('chatRoomsListItem')}
             >
             {chatRoom.name}
           </List.Item>
@@ -53,7 +54,7 @@ class ChatRooms extends Component {
   render () {
     const { chatRooms, currentUser, selectChatRoom } = this.props
     return (
-      <div className={cx('chatRoomsList')}>
+      <div className={cx('chatRoomsListContainer')}>
         <ChatRoomsList
           chatRooms={chatRooms}
           selectChatRoom={selectChatRoom}

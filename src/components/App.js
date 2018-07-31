@@ -16,7 +16,7 @@ import '../styles/styles.scss'
 
 class App extends React.Component {
   render() {
-    const activeStyle = { color: 'blue' }
+    // const activeStyle = { color: 'blue' }
     return (
       <div className='main-app'>
         {/* <div>
