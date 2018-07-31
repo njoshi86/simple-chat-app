@@ -1,10 +1,15 @@
 import ChatsProvider from '../data_providers/chats'
 
 const ChatActions = {
-  fetchChatRooms: () => ({
-    type: 'FETCH_CHAT_ROOMS',
-    promise: ChatsProvider.fetchChatRooms()
-  })
+  fetchChatRooms: (dispatch) => (
+    ChatsProvider.fetchChatRooms()
+    .then((value) => {
+      dispatch({
+        type: 'FETCH_CHAT_ROOMS',
+        value: value
+      })
+    })
+  )
 }
 
 export default ChatActions

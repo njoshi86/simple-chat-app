@@ -24,10 +24,7 @@ class ChatApp extends Component {
     fetchChatRooms: PropTypes.func.isRequired
   }
   static defaultProps = {
-    chatRooms: [
-      {name: 'Tea Chats', id: 0},
-      {name: 'Coffee Chats', id: 1}
-    ],
+    chatRooms: [],
     chatRoomUsers: {
       0: ['Ryan','Nick', 'Danielle'],
       1: ['Jessye']
@@ -82,14 +79,14 @@ class ChatApp extends Component {
 
 const mapStateToProps = (store) => {
   return {
-    chatRooms: store.chatRooms
+    chatRooms: store.chat.chatRooms
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchChatRooms: () => {
-      dispatch(ChatActions.fetchChatRooms())
+      ChatActions.fetchChatRooms(dispatch)
     }
     // ,
     // savedSearches: (params) => {
