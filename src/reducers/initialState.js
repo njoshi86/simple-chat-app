@@ -1,9 +1,6 @@
 export default {
   users: ['Ryan', 'Nick', 'Danielle', 'Jessye'],
-  chatRooms: [
-    {name: 'Tea Chats', id: 0},
-    {name: 'Coffee Chats', id: 1}
-  ],
+  chatRooms: [],
   chatRoomUsers: {
     0: ['Ryan', 'Nick', 'Danielle'],
     1: ['Jessye']

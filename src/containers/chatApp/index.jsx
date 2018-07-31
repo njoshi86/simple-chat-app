@@ -63,13 +63,13 @@ class ChatApp extends Component {
             />
           </Grid.Column>
           <Grid.Column mobile={8} tablet={11} computer={13} className={cx('chatWindowGrid')}>
-            <ChatWindow
+            {selectedChatRoom !== null && <ChatWindow
               chatRooms={chatRooms}
               chatRoomUsers={chatRoomUsers}
               chatRoomMessages={chatRoomMessages}
               currentUser={currentUser}
               selectedChatRoom={selectedChatRoom}
-            />
+            />}
           </Grid.Column>
       </Grid>
       </div>
