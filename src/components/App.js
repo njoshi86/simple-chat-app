@@ -1,6 +1,7 @@
 /* eslint-disable import/no-named-as-default */
 import { NavLink, Route, Switch } from 'react-router-dom'
 import ChatApp from '../containers/chatApp'
+import Login from '../containers/login'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { hot } from 'react-hot-loader'
@@ -24,6 +25,7 @@ class App extends React.Component {
         </div> */}
         <Switch>
           <Route exact path='/' component={ChatApp} />
+          <Route exact path='/login' component={Login} />
           {/* <Route path='/fuel-savings' component={FuelSavingsPage} />
           <Route path='/about' component={AboutPage} />
           <Route component={NotFoundPage} /> */}
