@@ -1,0 +1,22 @@
+.chatRoomsListContainer {
+  height: 100%;
+  width: 100%;
+  background-color: red;
+}
+
+.chatRoomsList {
+
+}
+
+.chatRoomsListItem {
+  padding-top: 10px !important;
+  padding-left: 15px !important;
+  padding-bottom: 10px !important;
+  color: white !important;
+  font-size: 16px;
+}
+
+.chatRoomsListItem.active {
+  background-color: black;
+  opacity: 0.5;
+}
