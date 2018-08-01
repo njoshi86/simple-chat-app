@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux'
-import { Button, Checkbox, Form } from 'semantic-ui-react'
-import ChatWindow from '../chatWindow'
-import ChatRooms from '../chatRooms'
+import { Button, Form } from 'semantic-ui-react'
 import classnames from 'classnames/bind'
 import stylesheet from './styles.scss'
 const cx = classnames.bind(stylesheet)
@@ -13,50 +11,54 @@ class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedChatRoomId: props.chatRooms.length > 0 ? props.chatRooms[0]['id'] : null
+      currentUser: '',
+      validUserName: false
     }
   }
   static propTypes = {
-    chatRooms: PropTypes.array.isRequired,
-    fetchChatRooms: PropTypes.func.isRequired
+    loginUser: PropTypes.func.isRequired
   }
   static defaultProps = {
-    chatRooms: []
+    loginUser: () => {}
   }
 
-  componentDidUpdate () {
-    if (this.state.selectedChatRoomId === null && this.props.chatRooms.length > 0) {
-      this.setState({selectedChatRoomId: this.props.chatRooms[0]['id']})
+  updateUserName = (e) => {
+    const userName = e.target.value
+    if (userName !== this.state.currentUser) {
+      this.setState({
+        currentUser: userName,
+        validUserName: userName.trim() !== ''
+      })
     }
   }
 
-  componentDidMount () {
-    this.props.fetchChatRooms()
+  loginUser = () => {
+    this.props.loginUser(this.state.currentUser)
   }
 
-  selectChatRoom = (id) => {
-    this.setState({
-      selectedChatRoomId: id
-    })
-  }
+
   render () {
-    const { chatRooms } = this.props
-    const { selectedChatRoomId } = this.state
+    const { currentUser, validUserName } = this.state
     return (
       <div className={cx('login-form-container')}>
         <Form className={cx('login-form')}>
           <Form.Field>
             <input
+              value={currentUser}
+              onChange={this.updateUserName}
               className={cx('login-form-input-field')}
               placeholder='Type your username...'
             />
           </Form.Field>
           <Button
             className={cx('login-form-submit-button')}
+            disabled={!validUserName}
             fluid
             color='red'
             type='submit'
-            floated=''>
+            floated=''
+            onClick={this.loginUser}
+            >
             Join the DoorDash Chat!
           </Button>
         </Form>
@@ -73,8 +75,8 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchChatRooms: () => {
-      return ChatActions.fetchChatRooms(dispatch)
+    loginUser: (userName) => {
+      return ChatActions.loginUser(userName, dispatch)
     }
   }
 }

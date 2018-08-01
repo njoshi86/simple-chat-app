@@ -42,6 +42,12 @@ const ChatActions = {
         value: value
       })
     })
+  },
+  loginUser: (userName, dispatch) => {
+    dispatch({
+      type: 'LOGIN_USER',
+      value: userName
+    })
   }
 }
 
