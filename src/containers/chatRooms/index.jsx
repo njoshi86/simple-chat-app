@@ -60,7 +60,7 @@ class ChatRooms extends Component {
   }
   static defaultProps = {
     chatRooms: [],
-    currentUser: 'Ryan',
+    currentUser: '',
     selectChatRoom: () => {}
   }
   render () {

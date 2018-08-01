@@ -24,7 +24,7 @@ class ChatWindow extends Component {
     chatRooms: [],
     chatRoomUsers: {},
     chatRoomMessages: {},
-    currentUser: 'Ryan',
+    currentUser: '',
     fetchChatRoomUsers: () => {},
     fetchChatRoomMessages: () => {},
     sendMessage: () => {}
@@ -73,7 +73,8 @@ const mapStateToProps = (store) => {
   return {
     chatRooms: store.chat.chatRooms,
     chatRoomUsers: store.chat.chatRoomUsers,
-    chatRoomMessages: store.chat.chatRoomMessages
+    chatRoomMessages: store.chat.chatRoomMessages,
+    currentUser: store.chat.currentUser
   }
 }
 
