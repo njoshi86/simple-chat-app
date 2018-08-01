@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux'
 import { List } from 'semantic-ui-react'
+import UserInfo from '../../components/userInfo'
 import classnames from 'classnames/bind'
 import stylesheet from './styles.scss'
 const cx = classnames.bind(stylesheet)
@@ -54,6 +55,7 @@ class ChatRooms extends Component {
   static propTypes = {
     chatRooms: PropTypes.array.isRequired,
     currentUser: PropTypes.string.isRequired,
+    loginTime: PropTypes.string.isRequired,
     selectChatRoom: PropTypes.func.isRequired
   }
   static defaultProps = {
@@ -62,9 +64,13 @@ class ChatRooms extends Component {
     selectChatRoom: () => {}
   }
   render () {
-    const { chatRooms, currentUser, selectChatRoom } = this.props
+    const { chatRooms, currentUser, selectChatRoom, loginTime } = this.props
     return (
       <div className={cx('chatRoomsListContainer')}>
+        <UserInfo
+          currentUser={currentUser}
+          loginTime={loginTime}
+        />
         <ChatRoomsList
           chatRooms={chatRooms}
           selectChatRoom={selectChatRoom}
@@ -74,5 +80,16 @@ class ChatRooms extends Component {
   }
 }
 
-export default ChatRooms
+const mapStateToProps = (store) => {
+  return {
+    chatRooms: store.chat.chatRooms,
+    currentUser: store.chat.currentUser,
+    loginTime: store.chat.loginTime
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(ChatRooms)
+
 export { ChatRoomsList }

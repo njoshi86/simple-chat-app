@@ -1,7 +1,8 @@
+import moment from 'moment'
 export default {
-  users: ['Ryan', 'Nick', 'Danielle', 'Jessye'],
   chatRooms: [],
   chatRoomUsers: {},
   chatRoomMessages: {},
-  currentUser: 'Ryan'
+  currentUser: 'Ryan',
+  loginTime: moment(moment()).format('YYYY-MM-DDThh:mm:ss')
 }

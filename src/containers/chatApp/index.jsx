@@ -18,12 +18,10 @@ class ChatApp extends Component {
   }
   static propTypes = {
     chatRooms: PropTypes.array.isRequired,
-    currentUser: PropTypes.string.isRequired,
     fetchChatRooms: PropTypes.func.isRequired
   }
   static defaultProps = {
-    chatRooms: [],
-    currentUser: 'Ryan'
+    chatRooms: []
   }
 
   componentDidUpdate () {
@@ -42,14 +40,13 @@ class ChatApp extends Component {
     })
   }
   render () {
-    const { chatRooms, currentUser } = this.props
+    const { chatRooms } = this.props
     const { selectedChatRoomId } = this.state
     return (
       <div className={cx('chatApp')}>
         <Grid className={cx('chatAppGrid')}>
           <Grid.Column mobile={8} tablet={5} computer={3} className={cx('chatRoomGrid')}>
             {chatRooms.length > 0 && <ChatRooms
-              chatRooms={chatRooms}
               selectChatRoom={this.selectChatRoom}
             />}
           </Grid.Column>
