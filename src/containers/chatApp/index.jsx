@@ -18,10 +18,19 @@ class ChatApp extends Component {
   }
   static propTypes = {
     chatRooms: PropTypes.array.isRequired,
-    fetchChatRooms: PropTypes.func.isRequired
+    currentUser: PropTypes.string.isRequired,
+    fetchChatRooms: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired
   }
   static defaultProps = {
-    chatRooms: []
+    chatRooms: [],
+    currentUser: ''
+  }
+
+  componentWillMount () {
+    if (this.props.currentUser === '') {
+      this.redirectToLogin()
+    }
   }
 
   componentDidUpdate () {
@@ -38,6 +47,9 @@ class ChatApp extends Component {
     this.setState({
       selectedChatRoomId: id
     })
+  }
+  redirectToLogin = () => {
+    this.props.history.push('/login')
   }
   render () {
     const { chatRooms } = this.props
@@ -63,7 +75,8 @@ class ChatApp extends Component {
 
 const mapStateToProps = (store) => {
   return {
-    chatRooms: store.chat.chatRooms
+    chatRooms: store.chat.chatRooms,
+    currentUser: store.chat.currentUser
   }
 }
 
