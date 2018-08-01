@@ -4,7 +4,7 @@ import ReadOnlyMessage from '../readOnlyMessage'
 import classnames from 'classnames/bind'
 import stylesheet from './styles.scss'
 const cx = classnames.bind(stylesheet)
-import { TextArea, Button } from 'semantic-ui-react'
+import { TextArea, Button, Grid } from 'semantic-ui-react'
 
 class SendMessage extends Component {
   constructor(props) {
@@ -35,17 +35,25 @@ class SendMessage extends Component {
   render () {
     return (
       <div className={cx('send-message-container')}>
-        <TextArea
-          rows={2}
-          placeholder='Type a message...'
-          onChange={this.onMessageChange}
-        />
-        <Button
-          primary
-          disabled={!this.state.isValidMessage}
-        >
-          Send
-        </Button>
+        <Grid className={cx('send-message-grid')}>
+          <Grid.Column mobile={12} tablet={11} computer={13} className={cx('text-area-grid')} textAlign='center'>
+            <TextArea
+              rows={2}
+              placeholder='Type a message...'
+              onChange={this.onMessageChange}
+              className={cx('send-message-text-area')}
+            />
+          </Grid.Column>
+          <Grid.Column mobile={4} tablet={5} computer={3} className={cx('send-message-btn-grid')} textAlign='center'>
+            <Button
+              primary
+              disabled={!this.state.isValidMessage}
+              className={cx('send-message-btn')}
+            >
+              Send
+            </Button>
+          </Grid.Column>
+        </Grid>
       </div>
     )
   }
