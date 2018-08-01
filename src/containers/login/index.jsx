@@ -56,7 +56,6 @@ class Login extends Component {
             fluid
             color='red'
             type='submit'
-            floated=''
             onClick={this.loginUser}
             >
             Join the DoorDash Chat!
