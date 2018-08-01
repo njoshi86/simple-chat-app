@@ -1,10 +1,7 @@
 export default {
   users: ['Ryan', 'Nick', 'Danielle', 'Jessye'],
   chatRooms: [],
-  chatRoomUsers: {
-    0: ['Ryan', 'Nick', 'Danielle'],
-    1: ['Jessye']
-  },
+  chatRoomUsers: {},
   chatRoomMessages: {
     0: [
       {name: 'Ryan', message: 'This message is important. This message is important. This message is important. This message is important. This message is important.', id: 'gg35545', reaction: null},

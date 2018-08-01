@@ -13,7 +13,7 @@ class ChatApp extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedChatRoom: props.chatRooms.length > 0 ? props.chatRooms[0]['id'] : null
+      selectedChatRoomId: props.chatRooms.length > 0 ? props.chatRooms[0]['id'] : null
     }
   }
   static propTypes = {
@@ -42,9 +42,9 @@ class ChatApp extends Component {
     currentUser: 'Ryan'
   }
 
-  componentWillReceiveProps (nextProps) {
-    if (this.state.selectedChatRoom === null && nextProps.chatRooms.length > 0) {
-      this.setState({selectedChatRoom: nextProps.chatRooms[0]['id']})
+  componentDidUpdate () {
+    if (this.state.selectedChatRoomId === null && this.props.chatRooms.length > 0) {
+      this.setState({selectedChatRoomId: this.props.chatRooms[0]['id']})
     }
   }
 
@@ -54,12 +54,12 @@ class ChatApp extends Component {
 
   selectChatRoom = (id) => {
     this.setState({
-      selectedChatRoom: id
+      selectedChatRoomId: id
     })
   }
   render () {
     const { chatRooms, chatRoomUsers, chatRoomMessages, currentUser } = this.props
-    const { selectedChatRoom } = this.state
+    const { selectedChatRoomId } = this.state
     return (
       <div className={cx('chatApp')}>
         <Grid className={cx('chatAppGrid')}>
@@ -70,12 +70,12 @@ class ChatApp extends Component {
             />}
           </Grid.Column>
           <Grid.Column mobile={8} tablet={11} computer={13} className={cx('chatWindowGrid')}>
-            {selectedChatRoom !== null && <ChatWindow
-              chatRooms={chatRooms}
-              chatRoomUsers={chatRoomUsers}
-              chatRoomMessages={chatRoomMessages}
-              currentUser={currentUser}
-              selectedChatRoom={selectedChatRoom}
+            {selectedChatRoomId !== null && <ChatWindow
+              // chatRooms={chatRooms}
+              // chatRoomUsers={chatRoomUsers}
+              // chatRoomMessages={chatRoomMessages}
+              // currentUser={currentUser}
+              selectedChatRoomId={selectedChatRoomId}
             />}
           </Grid.Column>
       </Grid>
@@ -93,7 +93,7 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchChatRooms: () => {
-      ChatActions.fetchChatRooms(dispatch)
+      return ChatActions.fetchChatRooms(dispatch)
     }
   }
 }
