@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux'
 import ChatRoom from '../../components/chatRoom'
 import ChatRoomHeader from '../../components/chatRoomHeader'
+import SendMessage from '../../components/sendMessage'
 import ChatActions from '../../actions/chatActions'
 import classnames from 'classnames/bind'
 import stylesheet from './styles.scss'
@@ -54,6 +55,7 @@ class ChatWindow extends Component {
           chatRoomMessages={chatRoomMessages[selectedChatRoomId]}
           currentUser={currentUser}
         />
+        <SendMessage />
       </div>
     )
   }
