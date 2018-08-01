@@ -17,6 +17,12 @@ export default function chatRoomsReducer (state = initialState, action) {
       copiedChatRoomMessages[chatRoomId] = action.value
       return objectAssign({}, state, { chatRoomMessages: copiedChatRoomMessages })
     }
+    case 'SEND_CHAT_ROOM_MESSAGES': {
+      const chatRoomId = action['meta']['chatRoomId']
+      const copiedChatRoomMessages = {...state.chatRoomMessages}
+      copiedChatRoomMessages[chatRoomId].push(action.value)
+      return objectAssign({}, state, { chatRoomMessages: copiedChatRoomMessages })
+    }
     default:
       return state
   }
