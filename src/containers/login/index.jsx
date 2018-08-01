@@ -16,6 +16,8 @@ class Login extends Component {
     }
   }
   static propTypes = {
+    currentUser: PropTypes.string.isRequired,
+    history: PropTypes.object.isRequired,
     loginUser: PropTypes.func.isRequired
   }
   static defaultProps = {
@@ -36,6 +38,21 @@ class Login extends Component {
     this.props.loginUser(this.state.currentUser)
   }
 
+  componentDidMount () {
+    if (this.props.currentUser !== '') {
+      this.redirectToChatApp()
+    }
+  }
+
+  componentDidUpdate () {
+    if (this.props.currentUser !== '') {
+      this.redirectToChatApp()
+    }
+  }
+
+  redirectToChatApp = () => {
+    this.props.history.push('/')
+  }
 
   render () {
     const { currentUser, validUserName } = this.state
@@ -68,7 +85,7 @@ class Login extends Component {
 
 const mapStateToProps = (store) => {
   return {
-    chatRooms: store.chat.chatRooms
+    currentUser: store.chat.currentUser
   }
 }
 
