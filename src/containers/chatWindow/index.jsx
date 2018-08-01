@@ -15,35 +15,27 @@ class ChatWindow extends Component {
     chatRoomMessages: PropTypes.object.isRequired,
     currentUser: PropTypes.string.isRequired,
     selectedChatRoomId: PropTypes.number.isRequired,
-    fetchChatRoomUsers: PropTypes.func.isRequired
+    fetchChatRoomUsers: PropTypes.func.isRequired,
+    fetchChatRoomMessages: PropTypes.func.isRequired
   }
   static defaultProps = {
     chatRooms: [],
-    chatRoomUsers: {
-      0: ['Ryan','Nick', 'Danielle'],
-      1: ['Jessye']
-    },
-    chatRoomMessages: {
-      0: [
-        {name: 'Ryan', message: 'This message is important. This message is important. This message is important. This message is important. This message is important.', id: 'gg35545', reaction: null},
-        {name: 'Nick', message: 'This message is important. This message is important. This message is important.', id: 'yy35578', reaction: null},
-        {name: 'Danielle', message: 'This message is important.', id: 'hh9843', reaction: null}
-      ],
-      1: [
-        {name: 'Jessye', message: 'ayy', id: 'ff35278', reaction: null}
-      ]
-    },
+    chatRoomUsers: {},
+    chatRoomMessages: {},
     currentUser: 'Ryan',
-    fetchChatRoomUsers: () => {}
+    fetchChatRoomUsers: () => {},
+    fetchChatRoomMessages: () => {}
   }
   componentWillMount () {
-    const { fetchChatRoomUsers, selectedChatRoomId } = this.props
+    const { fetchChatRoomUsers, fetchChatRoomMessages, selectedChatRoomId } = this.props
     fetchChatRoomUsers(selectedChatRoomId)
+    fetchChatRoomMessages(selectedChatRoomId)
   }
   componentDidUpdate (prevProps) {
     if (prevProps.selectedChatRoomId !== this.props.selectedChatRoomId) {
-      const { fetchChatRoomUsers, selectedChatRoomId } = this.props
+      const { fetchChatRoomUsers, fetchChatRoomMessages, selectedChatRoomId } = this.props
       fetchChatRoomUsers(selectedChatRoomId)
+      fetchChatRoomMessages(selectedChatRoomId)
     }
   }
   render () {
@@ -70,7 +62,8 @@ class ChatWindow extends Component {
 const mapStateToProps = (store) => {
   return {
     chatRooms: store.chat.chatRooms,
-    chatRoomUsers: store.chat.chatRoomUsers
+    chatRoomUsers: store.chat.chatRoomUsers,
+    chatRoomMessages: store.chat.chatRoomMessages
   }
 }
 
@@ -78,6 +71,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchChatRoomUsers: (chatRoomId) => {
       ChatActions.fetchChatRoomUsers(chatRoomId, dispatch)
+    },
+    fetchChatRoomMessages: (chatRoomId) => {
+      ChatActions.fetchChatRoomMessages(chatRoomId, dispatch)
     }
   }
 }
@@ -86,5 +82,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ChatWindow)
-
-// export default ChatWindow

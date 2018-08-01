@@ -20,6 +20,18 @@ const ChatActions = {
         })
       })
     )
+  },
+  fetchChatRoomMessages: (chatRoomId, dispatch) => {
+    return (
+      ChatsProvider.fetchChatRoomMessages(chatRoomId)
+      .then((value) => {
+        dispatch({
+          type: 'FETCH_CHAT_ROOM_MESSAGES',
+          meta: {chatRoomId},
+          value: value
+        })
+      })
+    )
   }
 }
 

@@ -15,19 +15,6 @@ class ChatRoom extends Component {
     chatRoomMessages: [],
     currentUser: ''
   }
-  // static defaultProps = {
-  //   chatRoomMessages: {
-  //     0: [
-  //       {name: 'Ryan', message: 'ayyyyy', id: 'gg35545', reaction: null},
-  //       {name: 'Nick', message: 'lmao', id: 'yy35578', reaction: null},
-  //       {name: 'Danielle', message: 'leggooooo', id: 'hh9843', reaction: null}
-  //     ],
-  //     1: [
-  //       {name: 'Jessye', message: 'ayy', id: 'ff35278', reaction: null}
-  //     ]
-  //   },
-  //   currentUser: 'Ryan'
-  // }
   render () {
     const { chatRoomMessages, currentUser } = this.props
     return (
