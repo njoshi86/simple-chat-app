@@ -24,7 +24,7 @@ class SendMessage extends Component {
   }
   onMessageChange = (e) => {
     const newMessage = e.target.value
-    if (this.state.message.trim() !== newMessage.trim()) {
+    if (this.state.message !== newMessage) {
       this.setState({
         message: newMessage,
         isValidMessage: newMessage.trim() !== ''
@@ -34,6 +34,18 @@ class SendMessage extends Component {
 
   sendMessage = () => {
     this.props.sendMessage(this.state.message)
+    .then(() => {
+      this.setState({
+        message: '',
+        isValidMessage: false
+      })
+    })
+    .catch(() => {
+      this.setState({
+        message: '',
+        isValidMessage: false
+      })
+    })
   }
 
   render () {
@@ -43,6 +55,7 @@ class SendMessage extends Component {
           <Grid.Column mobile={12} tablet={11} computer={13} className={cx('text-area-grid')} textAlign='center'>
             <TextArea
               rows={2}
+              value={this.state.message}
               placeholder='Type a message...'
               onChange={this.onMessageChange}
               className={cx('send-message-text-area')}

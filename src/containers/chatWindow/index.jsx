@@ -43,7 +43,7 @@ class ChatWindow extends Component {
   }
   sendMessage = (message) => {
     const { selectedChatRoomId, currentUser, sendMessage } = this.props
-    sendMessage(selectedChatRoomId, currentUser, message)
+    return sendMessage(selectedChatRoomId, currentUser, message)
   }
   render () {
     const { chatRooms, chatRoomUsers, chatRoomMessages, currentUser, selectedChatRoomId } = this.props
@@ -86,7 +86,7 @@ const mapDispatchToProps = (dispatch) => {
       ChatActions.fetchChatRoomMessages(chatRoomId, dispatch)
     },
     sendMessage: (chatRoomId, name, message) => {
-      ChatActions.sendMessage(chatRoomId, name, message, dispatch)
+      return ChatActions.sendMessage(chatRoomId, name, message, dispatch)
     }
   }
 }
