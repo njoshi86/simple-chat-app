@@ -1,3 +1,9 @@
+# Thanks to Cory House and react-slingshot (`git clone https://github.com/coryhouse/react-slingshot.git`) for this awesome starter code!
+
+1. **Setup App**
+  `yarn install`
+  `yarn run start`
+
 <p align="center">
   <img src="https://cloud.githubusercontent.com/assets/3129129/22811426/bb69dc06-ef0c-11e6-8092-a0bea9060b35.png"/>
 </p>
@@ -76,12 +82,12 @@ Why Slingshot?
         `echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p`.
 
     ### Windows
-    
+
     * **Install [Python 2.7](https://www.python.org/downloads/)**. Some node modules may rely on node-gyp, which requires Python on Windows.
     * **Install C++ Compiler**. Browser-sync requires a C++ compiler on Windows.
-    
+
       [Visual Studio Express](https://www.visualstudio.com/en-US/products/visual-studio-express-vs) comes bundled with a free C++ compiler.
-      
+
       If you already have Visual Studio installed:
       Open Visual Studio and go to File -> New -> Project -> Visual C++ -> Install Visual C++ Tools for Windows Desktop.
       The C++ compiler is used to compile browser-sync (and perhaps other Node modules).
