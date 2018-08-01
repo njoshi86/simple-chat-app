@@ -26,10 +26,14 @@ class SendMessage extends Component {
     const newMessage = e.target.value
     if (this.state.message.trim() !== newMessage.trim()) {
       this.setState({
-        message: newMessage.trim(),
+        message: newMessage,
         isValidMessage: newMessage.trim() !== ''
       })
     }
+  }
+
+  sendMessage = () => {
+    this.props.sendMessage(this.state.message)
   }
 
   render () {
@@ -49,6 +53,7 @@ class SendMessage extends Component {
               primary
               disabled={!this.state.isValidMessage}
               className={cx('send-message-btn')}
+              onClick={this.sendMessage}
             >
               Send
             </Button>

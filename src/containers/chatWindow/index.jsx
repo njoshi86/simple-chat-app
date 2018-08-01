@@ -17,7 +17,8 @@ class ChatWindow extends Component {
     currentUser: PropTypes.string.isRequired,
     selectedChatRoomId: PropTypes.number.isRequired,
     fetchChatRoomUsers: PropTypes.func.isRequired,
-    fetchChatRoomMessages: PropTypes.func.isRequired
+    fetchChatRoomMessages: PropTypes.func.isRequired,
+    sendMessage: PropTypes.func.isRequired
   }
   static defaultProps = {
     chatRooms: [],
@@ -25,7 +26,8 @@ class ChatWindow extends Component {
     chatRoomMessages: {},
     currentUser: 'Ryan',
     fetchChatRoomUsers: () => {},
-    fetchChatRoomMessages: () => {}
+    fetchChatRoomMessages: () => {},
+    sendMessage: () => {}
   }
   componentWillMount () {
     const { fetchChatRoomUsers, fetchChatRoomMessages, selectedChatRoomId } = this.props
@@ -38,6 +40,10 @@ class ChatWindow extends Component {
       fetchChatRoomUsers(selectedChatRoomId)
       fetchChatRoomMessages(selectedChatRoomId)
     }
+  }
+  sendMessage = (message) => {
+    const { selectedChatRoomId, currentUser, sendMessage } = this.props
+    sendMessage(selectedChatRoomId, currentUser, message)
   }
   render () {
     const { chatRooms, chatRoomUsers, chatRoomMessages, currentUser, selectedChatRoomId } = this.props
@@ -55,7 +61,9 @@ class ChatWindow extends Component {
           chatRoomMessages={chatRoomMessages[selectedChatRoomId]}
           currentUser={currentUser}
         />
-        <SendMessage />
+        <SendMessage
+          sendMessage={this.sendMessage}
+        />
       </div>
     )
   }
@@ -76,6 +84,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     fetchChatRoomMessages: (chatRoomId) => {
       ChatActions.fetchChatRoomMessages(chatRoomId, dispatch)
+    },
+    sendMessage: (chatRoomId, name, message) => {
+      ChatActions.sendMessage(chatRoomId, name, message, dispatch)
     }
   }
 }

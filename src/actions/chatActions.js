@@ -32,6 +32,18 @@ const ChatActions = {
         })
       })
     )
+  },
+  sendMessage: (chatRoomId, name, message, dispatch) => {
+    return (
+      ChatsProvider.sendMessage(chatRoomId, name, message)
+      .then((value) => {
+        dispatch({
+          type: 'SEND_CHAT_ROOM_MESSAGES',
+          meta: {chatRoomId},
+          value: value
+        })
+      })
+    )
   }
 }
 

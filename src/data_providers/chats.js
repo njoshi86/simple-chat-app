@@ -30,6 +30,23 @@ const ChatsProvider = {
     .catch((err) => {
       throw err.body
     })
+  },
+  sendMessage: (roomId, name, message) => {
+    const apiUrl = `${config}/rooms/${roomId}/messages`
+    const postBody = {
+      'name': name,
+      'message': message
+    }
+    return axios(apiUrl, {
+      method: 'POST',
+      data: postBody
+    })
+    .then((response) => {
+      return response.data
+    })
+    .catch((err) => {
+      throw err.body
+    })
   }
 }
 
